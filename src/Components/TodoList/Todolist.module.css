@@ -1,0 +1,35 @@
+.btnPanel {
+    text-align: center;
+}
+
+.btnPanel button {
+    border-radius: 100%;
+}
+
+.btnRemove {
+    border-radius: 100%;
+}
+
+.wrapperTodo {
+    background-color: #ffffff;
+    margin: 0 auto;
+    width: 400px;
+    border-radius: 10px;
+}
+
+.wrapperTodo ul li {
+    list-style-type: none;
+}
+
+.btnHigh {
+    background-color: red;
+}
+
+
+.btnMiddle {
+    background-color: yellow;
+}
+
+.btnLow {
+    background-color: green;
+}

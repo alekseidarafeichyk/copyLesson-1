@@ -1,0 +1,31 @@
+.message {
+    width: 200px;
+    background-color: #ffffff;
+    border-radius: 10px 10px 10px 0px;
+    margin: 0 auto;
+    position: relative;
+    padding-right: 5px;
+}
+
+/*.message:after {*/
+/*    display: block;*/
+/*    content: "";*/
+/*    clear: both;*/
+/*}*/
+
+.message:before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: -20px;
+    border-top: 20px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 20px solid #ffffff;
+}
+
+.message:after {
+    display: block;
+    content: "";
+    clear: both;
+}

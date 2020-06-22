@@ -1,0 +1,17 @@
+.firstname {
+    color: green;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.lastname {
+    color: blue;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.patronymic {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+}
