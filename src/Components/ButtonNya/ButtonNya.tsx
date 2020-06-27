@@ -1,7 +1,7 @@
 import React, {DetailedHTMLProps, ButtonHTMLAttributes} from "react";
 
 type ButtonNyaPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
-    & {name: string, onClick: () => void, className?: string}
+    & {className?: string}
 
 
 function ButtonNya(props: ButtonNyaPropsType) {
@@ -10,8 +10,7 @@ function ButtonNya(props: ButtonNyaPropsType) {
         <>
             <button
                 className={props.className}
-                onClick={props.onClick}>
-                {props.name}</button>
+                {...props}/>
         </>
     )
 }

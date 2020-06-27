@@ -23,29 +23,28 @@ function Todolist(props: TodolistPropsType) {
                         return <li key={task.id}>
                             <span>{task.deal} : </span>
                             <span>{task.priority} </span>
-                            <ButtonNya className={s.btnRemove} name={'remove'} onClick={() => {
-                                props.deleteTask(task.id)
-                            }}/>
-
+                            <ButtonNya className={s.btnRemove} onClick={() => {
+    props.deleteTask(task.id)
+                            }}>delete</ButtonNya>
                         </li>
                     }
                 )
                 }
             </ul>
             <div className={s.btnPanel}>
-                <ButtonNya className={s.btnHigh} name={'High'} onClick={() => {
+                <ButtonNya className={s.btnHigh}  onClick={() => {
                     props.changeFilter('high')
-                }}/>
+                }}>High</ButtonNya>
 
-                <ButtonNya className={s.btnMiddle} name={'Middle'} onClick={() => {
+                <ButtonNya className={s.btnMiddle}  onClick={() => {
                     props.changeFilter('middle')
-                }}/>
-                <ButtonNya className={s.btnLow} name={'Low'} onClick={() => {
+                }}>Middle</ButtonNya>
+                <ButtonNya className={s.btnLow}  onClick={() => {
                     props.changeFilter('low')
-                }}/>
-                <ButtonNya name={'All'} onClick={() => {
+                }}>Low</ButtonNya>
+                <ButtonNya  onClick={() => {
                     props.changeFilter('all')
-                }}/>
+                }}>All</ButtonNya>
             </div>
         </div>
     );
