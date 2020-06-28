@@ -1,10 +1,11 @@
 import React, {KeyboardEvent, useState} from 'react';
 import './App.css';
-import Message from "./Components/Messages/Message/Message";
-import Todolist from "./Components/TodoList/Todolist";
-import Form from "./Components/LessonThree/Form";
 import {v1} from "uuid";
-import InputNya from "./Components/InputNya/InputNya";
+import {BrowserRouter, Route} from "react-router-dom";
+import PreJunior from "./Components/Content/PreJunior/PreJunior";
+import Junior from "./Components/Content/Junior/Junior";
+import JuniorPlus from "./Components/Content/JuniorPlus/JuniorPlus";
+import Accordion from './Components/Accordion/Accordion';
 
 
 export type filterValueType = 'all' | 'high' | 'middle' | 'low'
@@ -72,22 +73,33 @@ function App () {
         }
     }
 
+    let [collapsed,setCollapsed] = useState(false)
+
     return (
-        <div>
-            <Message/>
-            <Todolist
-                tasks={filterTask}
-                deleteTask={deleteTask}
-                changeFilter={changeFilter}
-            />
-            <Form
-                  arr={arr}
-                  onEnter={onEnter}
-                  error={error}
-                  sayHi={sayHi}
-            />
-        </div>
+            <BrowserRouter>
+                <div>
+                    <Accordion name={'menu'}
+                               collapsed={collapsed}
+                               onClick={setCollapsed}
+                    />
+
+                </div>
+                <div>
+                    <Route path={'/prejunior'} render={() => <PreJunior
+                        tasks={filterTask}
+                        deleteTask={deleteTask}
+                        changeFilter={changeFilter}
+                        sayHi={sayHi}
+                        arr={arr}
+                        error={error}
+                        onEnter={onEnter}
+                    />} />
+                    <Route path={'/junior'} render={() => <Junior/>}/>
+                    <Route path={'/juniorplus'} render={() => <JuniorPlus/>}/>
+                </div>
+            </BrowserRouter>
     );
+
 }
 
 export default App;

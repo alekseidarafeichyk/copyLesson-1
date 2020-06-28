@@ -4,7 +4,7 @@ import s from './Form.module.css'
 import InputNya from "../InputNya/InputNya";
 import ButtonNya from "../ButtonNya/ButtonNya";
 
-type FormPropsType = {
+export type FormPropsType = {
     arr: Array<arrType>,
     onEnter: (e: KeyboardEvent<HTMLInputElement>) => void,
     error: string,
@@ -29,7 +29,7 @@ function Form(props: FormPropsType) {
                       error={props.error}
                       onChange={onChangeHandler}
             />
-            <ButtonNya name={'add'} onClick={onClickHandler} />
+            <ButtonNya onClick={onClickHandler} >add</ButtonNya>
             <span className={s.span}>{props.arr.length}</span>
         </div>
     );

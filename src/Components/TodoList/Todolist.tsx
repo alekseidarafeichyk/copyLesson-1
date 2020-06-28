@@ -3,13 +3,13 @@ import {filterValueType} from "../../App";
 import s from './Todolist.module.css'
 import ButtonNya from "../ButtonNya/ButtonNya";
 
-type TaskType = {
+export type TaskType = {
     deal: string,
     priority: string,
     id: number,
 }
 
-type TodolistPropsType = {
+export type TodolistPropsType = {
     tasks: Array<TaskType>
     deleteTask: (id: number) => void,
     changeFilter: (value: filterValueType) => void
