@@ -68,9 +68,7 @@ function App () {
     }
 
     const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
-        if(e.charCode === 13) {
             sayHi(e.currentTarget.value)
-        }
     }
 
     let [collapsed,setCollapsed] = useState(false)

@@ -3,8 +3,8 @@ import s from './InputNya.module.css'
 
 export type InputNyaPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
     & {
-    onEnter?: (e: KeyboardEvent<HTMLInputElement>) => void,
-    error?: string,
+    onEnter: (e: KeyboardEvent<HTMLInputElement>) => void,
+    error: string,
 };
 
 function InputNya(props: InputNyaPropsType) {
@@ -12,12 +12,17 @@ function InputNya(props: InputNyaPropsType) {
 
     const style = error ? `${s.inputNya} ${s.error}` : `${s.inputNya}`
 
+  const  onEnterHandler =(e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.charCode === 13) {
+            props.onEnter(e)
+        }
+    }
+
     return (
         <>
             <input className={`${s.inp} ${style}`} {...restProps}
                    type="text"
-                   onKeyPress={onEnter}
-
+                   onKeyPress={onEnterHandler}
             />
             <span>{error}</span>
         </>

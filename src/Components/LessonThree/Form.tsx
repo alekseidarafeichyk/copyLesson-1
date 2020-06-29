@@ -15,8 +15,14 @@ function Form(props: FormPropsType) {
     let [valueInput, setValueInput] = useState('')
 
     const  onClickHandler = () => {
+        debugger
       props.sayHi(valueInput);
         setValueInput('')
+  }
+
+  let  onEnterHandler = (e : KeyboardEvent<HTMLInputElement>) => {
+      props.onEnter(e)
+      setValueInput('')
   }
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,9 +31,10 @@ function Form(props: FormPropsType) {
 
     return (
         <div className={s.wrapper}>
-            <InputNya onEnter={props.onEnter}
+            <InputNya onEnter={onEnterHandler}
                       error={props.error}
                       onChange={onChangeHandler}
+                      value={valueInput}
             />
             <ButtonNya onClick={onClickHandler} >add</ButtonNya>
             <span className={s.span}>{props.arr.length}</span>
