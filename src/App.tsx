@@ -1,4 +1,4 @@
-import React, {KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import './App.css';
 import {v1} from "uuid";
 import {BrowserRouter, Route} from "react-router-dom";
@@ -11,12 +11,12 @@ import Accordion from './Components/Accordion/Accordion';
 export type filterValueType = 'all' | 'high' | 'middle' | 'low'
 
 
- export type arrType = {
+export type arrType = {
     id: string,
     name: string
 }
 
-function App () {
+function App() {
 
     let [tasks, setTasks] = useState([
         {deal: 'learn react', priority: 'high', id: 1},
@@ -29,6 +29,9 @@ function App () {
     ]);
     let [sortTask, setSortTask] = useState<filterValueType>('all');
     let [error, setError] = useState<string>('');
+    let [collapsed, setCollapsed] = useState(false)
+    let [value, setValue] = useState('Click me!')
+
 
     function deleteTask(id: number) {
         tasks = tasks.filter(task => task.id != id);
@@ -51,7 +54,6 @@ function App () {
     }
 
 
-
     const [arr, setArr] = useState<Array<arrType>>([])
 
 
@@ -68,34 +70,42 @@ function App () {
     }
 
     const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
-            sayHi(e.currentTarget.value)
+        sayHi(e.currentTarget.value)
     }
 
-    let [collapsed,setCollapsed] = useState(false)
+    const onChangeForEditableSpan = (e: ChangeEvent<HTMLInputElement>) => {
+        setValue(e.currentTarget.value)
+    }
 
     return (
-            <BrowserRouter>
-                <div>
-                    <Accordion name={'menu'}
-                               collapsed={collapsed}
-                               onClick={setCollapsed}
-                    />
+        <BrowserRouter>
 
-                </div>
-                <div>
-                    <Route path={'/prejunior'} render={() => <PreJunior
-                        tasks={filterTask}
-                        deleteTask={deleteTask}
-                        changeFilter={changeFilter}
-                        sayHi={sayHi}
-                        arr={arr}
-                        error={error}
-                        onEnter={onEnter}
-                    />} />
-                    <Route path={'/junior'} render={() => <Junior/>}/>
-                    <Route path={'/juniorplus'} render={() => <JuniorPlus/>}/>
-                </div>
-            </BrowserRouter>
+            <div>
+                <Accordion name={'menu'}
+                           collapsed={collapsed}
+                           onClick={setCollapsed}
+                />
+
+            </div>
+            <div>
+                <Route path={'/prejunior'} render={() => <PreJunior
+                    tasks={filterTask}
+                    deleteTask={deleteTask}
+                    changeFilter={changeFilter}
+                    sayHi={sayHi}
+                    arr={arr}
+                    error={error}
+                    onEnter={onEnter}
+                />}/>
+                <Route path={'/junior'} render={() => <Junior
+                    onEnter={onEnter}
+                    error={error}
+                    value={value}
+                    setValue={setValue}
+                    onChange={onChangeForEditableSpan}/>}/>
+                <Route path={'/juniorplus'} render={() => <JuniorPlus/>}/>
+            </div>
+        </BrowserRouter>
     );
 
 }
