@@ -17,14 +17,7 @@ function EditableSpan(props: EditableSpan) {
 
     const changeEditMode = () => setEditMode(!editMode)
 
-    const onCLickSaveState = () => {
-        saveState<StateType>("test", {inputValue: props.value});
-    }
 
-    const onCLickRestoreState = () => {
-        const state: StateType = restoreState<StateType>("test", {inputValue: ""});
-        props.setValue(state.inputValue)
-    }
 
     return (
         <div className={s.container}>
@@ -37,10 +30,7 @@ function EditableSpan(props: EditableSpan) {
                         autoFocus onBlur={changeEditMode}
                         value={props.value}
                         onChange={props.onChange}/>}
-            <div>
-                <ButtonNya onClick={onCLickSaveState}>save</ButtonNya>
-                <ButtonNya onClick={onCLickRestoreState}>restore</ButtonNya>
-            </div>
+
         </div>
     );
 }

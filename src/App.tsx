@@ -7,9 +7,7 @@ import Junior from "./Components/Content/Junior/Junior";
 import JuniorPlus from "./Components/Content/JuniorPlus/JuniorPlus";
 import Accordion from './Components/Accordion/Accordion';
 
-
 export type filterValueType = 'all' | 'high' | 'middle' | 'low'
-
 
 export type arrType = {
     id: string,
