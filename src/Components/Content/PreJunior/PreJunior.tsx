@@ -2,7 +2,7 @@ import React from "react";
 import Message from "../../Messages/Message/Message";
 import Todolist, { TaskType } from "../../TodoList/Todolist";
 import { filterValueType } from "../../../App";
-import Form, {FormPropsType} from "../../LessonThree/Form";
+import Form, {FormPropsType} from "../../Form/Form";
 
 type PreJuniorPropsType = {
     tasks: Array<TaskType>

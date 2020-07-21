@@ -10,7 +10,7 @@ type SelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>
 
 function Select(props: SelectPropsType) {
     let options = props.arr.map(el => {
-        return <option value={el}>{el}</option>
+        return <option value={el} key={el}>{el}</option>
     })
 
     return (

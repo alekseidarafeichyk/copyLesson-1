@@ -5,6 +5,7 @@ import {restoreState, saveState, StateType} from "../../LocalStorage/localstorag
 import Select from "../../common/Select";
 import Radio from "../../common/Radio";
 import s from './Junior.module.css'
+import ArrayPerson from "../../ArrayPerson/ArrayPerson";
 
 type JuniorPropsType = {
     onEnter: (e: KeyboardEvent<HTMLInputElement>) => void,
@@ -68,6 +69,7 @@ function Junior(props: JuniorPropsType) {
                     onChangeRadio={onChangeRadio}
                 />
             </div>
+                <ArrayPerson/>
         </div>
     )
 }
