@@ -1,0 +1,15 @@
+.modal {
+    display: none;
+}
+
+.time:hover .modal{
+    position: absolute;
+    left: 100px;
+    top: -20px;
+    display: block;
+    color: ivory;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px black;
+    background-color: rgba(139, 0, 0, 0.5);
+}

@@ -1,11 +1,12 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from "react";
-import EditableSpan from "../../common/EditableSpan";
-import ButtonNya from "../../ButtonNya/ButtonNya";
-import {restoreState, saveState, StateType} from "../../LocalStorage/localstorage";
-import Select from "../../common/Select";
-import Radio from "../../common/Radio";
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import EditableSpan from '../../common/EditableSpan';
+import ButtonNya from '../../ButtonNya/ButtonNya';
+import {restoreState, saveState, StateType} from '../../LocalStorage/localstorage';
+import Select from '../../common/Select';
+import Radio from '../../common/Radio';
 import s from './Junior.module.css'
-import ArrayPerson from "../../ArrayPerson/ArrayPerson";
+import ArrayPerson from '../../ArrayPerson/ArrayPerson';
+import Time from '../../Time/Time';
 
 type JuniorPropsType = {
     onEnter: (e: KeyboardEvent<HTMLInputElement>) => void,
@@ -41,7 +42,6 @@ function Junior(props: JuniorPropsType) {
         SetCheckedRadio(e.currentTarget.value)
     }
 
-
     return (<div>
             <EditableSpan
                 onEnter={props.onEnter}
@@ -69,7 +69,8 @@ function Junior(props: JuniorPropsType) {
                     onChangeRadio={onChangeRadio}
                 />
             </div>
-                <ArrayPerson/>
+            <div><ArrayPerson/></div>
+                <Time/>
         </div>
     )
 }

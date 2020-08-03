@@ -1,8 +1,6 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from "react";
-import InputNya from "../InputNya/InputNya";
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import InputNya from '../InputNya/InputNya';
 import s from './EditableSpan.module.css'
-import ButtonNya from "../ButtonNya/ButtonNya";
-import {restoreState, saveState, StateType} from "../LocalStorage/localstorage";
 
 type EditableSpan = {
     onEnter: (e: KeyboardEvent<HTMLInputElement>) => void
