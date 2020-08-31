@@ -10,12 +10,12 @@ type RadioPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, H
     }
 
 function Radio(props: RadioPropsType) {
-    let inputs = props.arr.map(el => {
+    let inputs = props.arr.map((el,i) => {
         return (
             <div>
                 <label>
                     <input
-                        key={el}
+                        key={i}
                         type="radio"
                         name={props.name}
                         value={el}

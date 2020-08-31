@@ -7,6 +7,9 @@ import Radio from '../../common/Radio';
 import s from './Junior.module.css'
 import ArrayPerson from '../../ArrayPerson/ArrayPerson';
 import Time from '../../Time/Time';
+import {Loader} from '../../Loading/Loader';
+import {useDispatch} from 'react-redux';
+import {setLoadingAC} from '../../../redux/loaderReducer';
 
 type JuniorPropsType = {
     onEnter: (e: KeyboardEvent<HTMLInputElement>) => void,
@@ -24,12 +27,14 @@ function Junior(props: JuniorPropsType) {
     let [selectValue, SetSelectValue] = useState<string>(arr[0])
     let [checkedRadio, SetCheckedRadio] = useState<string>(arrRadio[0])
 
+    let dispatch = useDispatch();
+
     const onCLickSaveState = () => {
-        saveState<StateType>("test", {inputValue: props.value});
+        saveState<StateType>('test', {inputValue: props.value});
     }
 
     const onCLickRestoreState = () => {
-        const state: StateType = restoreState<StateType>("test", {inputValue: ""});
+        const state: StateType = restoreState<StateType>('test', {inputValue: ''});
         props.setValue(state.inputValue)
     }
 
@@ -40,6 +45,13 @@ function Junior(props: JuniorPropsType) {
     const onChangeRadio = (e: ChangeEvent<HTMLInputElement>) => {
         debugger
         SetCheckedRadio(e.currentTarget.value)
+    }
+
+    const changeLoading = () => {
+        dispatch(setLoadingAC());
+        setTimeout(() => {
+            dispatch(setLoadingAC());
+        }, 3000)
     }
 
     return (<div>
@@ -70,7 +82,8 @@ function Junior(props: JuniorPropsType) {
                 />
             </div>
             <div><ArrayPerson/></div>
-                <Time/>
+            <Time/>
+            <button onClick={changeLoading}>loader</button>
         </div>
     )
 }

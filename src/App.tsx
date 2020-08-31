@@ -6,6 +6,10 @@ import PreJunior from './Components/Content/PreJunior/PreJunior';
 import Junior from './Components/Content/Junior/Junior';
 import JuniorPlus from './Components/Content/JuniorPlus/JuniorPlus';
 import Accordion from './Components/Accordion/Accordion';
+import {useSelector} from 'react-redux';
+import {AppRootStateType} from './redux/store';
+import {InitialState, InitialStateType} from './redux/loaderReducer';
+import {Loader} from './Components/Loading/Loader';
 
 export type filterValueType = 'all' | 'high' | 'middle' | 'low'
 
@@ -76,8 +80,12 @@ function App() {
     }
 
 
-    //
+    let state = useSelector<AppRootStateType, InitialStateType>(state => state.loader)
+
+
     return (
+        state.loading ?
+            <Loader/> :
         <BrowserRouter>
             <Accordion name={'menu'}
                        collapsed={collapsed}
