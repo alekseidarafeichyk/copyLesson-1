@@ -15,7 +15,6 @@ type ActionType = {
 export const loaderReducer = (state = InitialState, action: ActionType): InitialStateType => {
     switch (action.type) {
         case SET_LOADING:
-            debugger
             return {
                 ...state,
                 loading: !state.loading
@@ -24,7 +23,7 @@ export const loaderReducer = (state = InitialState, action: ActionType): Initial
     }
 }
 
-export const setLoadingAC = () => {
+export const setLoadingAC = () : ActionType => {
     return {
         type : SET_LOADING,
     }

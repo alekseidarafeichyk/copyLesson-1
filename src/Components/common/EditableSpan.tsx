@@ -15,8 +15,6 @@ function EditableSpan(props: EditableSpan) {
 
     const changeEditMode = () => setEditMode(!editMode)
 
-
-
     return (
         <div className={s.container}>
             {

@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useCallback, useState} from 'react';
 import EditableSpan from '../../common/EditableSpan';
 import ButtonNya from '../../ButtonNya/ButtonNya';
 import {restoreState, saveState, StateType} from '../../LocalStorage/localstorage';
@@ -10,6 +10,7 @@ import Time from '../../Time/Time';
 import {Loader} from '../../Loading/Loader';
 import {useDispatch} from 'react-redux';
 import {setLoadingAC} from '../../../redux/loaderReducer';
+import {Range} from '../../common/Range';
 
 type JuniorPropsType = {
     onEnter: (e: KeyboardEvent<HTMLInputElement>) => void,
@@ -38,6 +39,8 @@ function Junior(props: JuniorPropsType) {
         props.setValue(state.inputValue)
     }
 
+
+
     const onChangeOptionValue = (e: ChangeEvent<HTMLSelectElement>) => {
         SetSelectValue(e.currentTarget.value)
     }
@@ -47,12 +50,22 @@ function Junior(props: JuniorPropsType) {
         SetCheckedRadio(e.currentTarget.value)
     }
 
+
+
     const changeLoading = () => {
         dispatch(setLoadingAC());
         setTimeout(() => {
             dispatch(setLoadingAC());
         }, 3000)
     }
+
+
+
+    let [rangeValue, setRangeValue] = useState(0);
+    const changeRangeValue = useCallback ((e : ChangeEvent<HTMLInputElement> ) => {
+        let value = Number(e.currentTarget.value);
+            setRangeValue(value);
+    }, [])
 
     return (<div>
             <EditableSpan
@@ -84,6 +97,7 @@ function Junior(props: JuniorPropsType) {
             <div><ArrayPerson/></div>
             <Time/>
             <button onClick={changeLoading}>loader</button>
+            <Range minValue={0} maxValue={100} value={rangeValue} onChange={changeRangeValue}/>
         </div>
     )
 }
