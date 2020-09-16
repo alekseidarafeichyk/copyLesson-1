@@ -58,7 +58,6 @@ function App() {
 
     const [arr, setArr] = useState<Array<arrType>>([])
 
-
     function sayHi(name: string) {
         if (name.trim()) {
             alert(`Hello: ${name}`);
