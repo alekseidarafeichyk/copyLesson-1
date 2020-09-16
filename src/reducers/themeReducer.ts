@@ -9,7 +9,6 @@ const themeState: themeStateType = {
 export const themeReducer = (state:themeStateType = themeState, action: changeThemeActionType): themeStateType => {
     switch (action.type) {
         case 'CHANGE-BACKGROUND' :
-            debugger
             return {
                 ...state, color: action.theme
 
